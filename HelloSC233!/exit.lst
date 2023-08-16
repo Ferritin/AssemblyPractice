@@ -1,0 +1,19 @@
+     1                                 %line 1+1 HelloSC233.asm
+     2                                 [section .data]
+     3                                 
+     4 00000000 48656C6C6F20435320-     msg: db "Hello CS 233!", 0x0a,0
+     5 00000000 323333210A00       
+     6                                 
+     7                                 [section .text]
+     8                                 [global main]
+     9                                 [extern printf]
+    10                                 
+    11                                 main:
+    12 00000000 55                      push rbp
+    13 00000001 4889E5                  mov rbp, rsp
+    14 00000004 488D3C25[00000000]      lea rdi,[msg]
+    15 0000000C 31C0                    xor eax, eax
+    16 0000000E E8(F6FFFFFF)            call printf
+    17 00000013 31C0                    xor eax,eax
+    18 00000015 5D                      pop rbp
+    19 00000016 C3                      ret

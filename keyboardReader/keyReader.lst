@@ -1,0 +1,54 @@
+     1                                 %line 1+1 keyReader.asm
+     2                                 [section .data]
+     3                                 
+     4                                 
+     5 00000000 506C6561736520656E-     userMsg db 'Please enter a number: '
+     6 00000000 7465722061206E756D-
+     7 00000000 6265723A20         
+     8                                  lenUserMsg equ $-userMsg
+     9 00000017 596F75206861766520-     dispMsg db 'You have entered: '
+    10 00000017 656E74657265643A20 
+    11                                  lenDispMsg equ $-dispMsg
+    12                                 
+    13                                 [section .bss]
+    14                                 
+    15 00000000 <gap>                   num resb 5
+    16                                 
+    17                                 [section .text]
+    18                                 [global _start]
+    19                                 
+    20                                 _start:
+    21                                 
+    22                                 
+    23 00000000 B804000000              mov eax, 4
+    24 00000005 BB01000000              mov ebx, 1
+    25 0000000A B9[00000000]            mov ecx, userMsg
+    26 0000000F BA17000000              mov edx, lenUserMsg
+    27 00000014 CD80                    int 80
+    28                                 
+    29                                 
+    30 00000016 B803000000              mov eax, 3
+    31 0000001B BB02000000              mov ebx, 2
+    32 00000020 B9[00000000]            mov ecx, num
+    33 00000025 BA05000000              mov edx , 5
+    34 0000002A CD80                    int 80
+    35                                 
+    36                                 
+    37                                 
+    38 0000002C B804000000              mov eax, 4
+    39 00000031 BB01000000              mov ebx, 1
+    40 00000036 B9[00000000]            mov ecx, dispMsg
+    41 0000003B BA12000000              mov edx, lenDispMsg
+    42 00000040 CD80                    int 80
+    43                                 
+    44                                 
+    45 00000042 B804000000              mov eax, 4
+    46 00000047 BB01000000              mov ebx, 1
+    47 0000004C B9[00000000]            mov ecx, num
+    48 00000051 BA05000000              mov edx, 5
+    49 00000056 CD80                    int 80
+    50                                 
+    51                                 
+    52 00000058 B801000000              mov eax, 1
+    53 0000005D BB00000000              mov ebx, 0
+    54 00000062 CD80                    int 80
